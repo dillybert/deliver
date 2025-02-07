@@ -5,18 +5,46 @@
 :root {
   --primary-color: #FF4E4E;
   --secondary-color: #FFB74D;
+  --min-font-size: 14;
+  --max-font-size: 18;
+  --fluid-screen-min: 320;
+  --fluid-screen-max: 1200;
 }
 
 @layer base {
+  html {
+    font-size: clamp(
+      var(--min-font-size) * 1px,
+      calc(var(--min-font-size) * 1px + (var(--max-font-size) - var(--min-font-size)) * (100vw - var(--fluid-screen-min) * 1px) / (var(--fluid-screen-max) - var(--fluid-screen-min))),
+      var(--max-font-size) * 1px
+    );
+  }
+
   body {
     @apply text-gray-900 overflow-x-hidden touch-manipulation;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  h1 {
+    @apply text-2xl sm:text-3xl font-bold;
+    font-size: clamp(1.5rem, calc(1.5rem + 1vw), 2rem);
+  }
+
+  h2 {
+    @apply text-xl sm:text-2xl font-semibold;
+    font-size: clamp(1.25rem, calc(1.25rem + 0.75vw), 1.75rem);
+  }
+
+  h3 {
+    @apply text-lg sm:text-xl font-medium;
+    font-size: clamp(1.125rem, calc(1.125rem + 0.5vw), 1.5rem);
   }
 }
 
 @layer components {
   .btn {
     @apply px-4 py-2 rounded-full font-medium transition-all duration-200 active:scale-95;
+    font-size: clamp(0.875rem, calc(0.875rem + 0.25vw), 1rem);
   }
   
   .btn-primary {
@@ -33,6 +61,42 @@
   
   .input {
     @apply w-full px-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:border-[--primary-color] transition-colors;
+    font-size: clamp(0.875rem, calc(0.875rem + 0.25vw), 1rem);
+  }
+}
+
+@layer utilities {
+  .text-fluid-xs {
+    font-size: clamp(0.75rem, calc(0.75rem + 0.25vw), 0.875rem);
+  }
+
+  .text-fluid-sm {
+    font-size: clamp(0.875rem, calc(0.875rem + 0.25vw), 1rem);
+  }
+
+  .text-fluid-base {
+    font-size: clamp(1rem, calc(1rem + 0.25vw), 1.125rem);
+  }
+
+  .text-fluid-lg {
+    font-size: clamp(1.125rem, calc(1.125rem + 0.5vw), 1.25rem);
+  }
+
+  .text-fluid-xl {
+    font-size: clamp(1.25rem, calc(1.25rem + 0.75vw), 1.5rem);
+  }
+
+  .text-fluid-2xl {
+    font-size: clamp(1.5rem, calc(1.5rem + 1vw), 2rem);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 }
 

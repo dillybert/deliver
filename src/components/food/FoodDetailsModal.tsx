@@ -142,17 +142,17 @@ export default function FoodDetailsModal({ isOpen, onClose, food }: FoodDetailsM
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 text-white">
-                    <Dialog.Title className="text-xl font-bold">
+                    <Dialog.Title className="text-fluid-xl font-bold">
                       {food.name}
                     </Dialog.Title>
-                    <p className="text-sm text-white/90">{food.description}</p>
+                    <p className="text-fluid-sm text-white/90">{food.description}</p>
                   </div>
                 </div>
 
                 <div className="p-4 space-y-6">
                   {options.map((section) => (
                     <div key={section.title}>
-                      <h3 className="font-medium mb-3">{section.title}</h3>
+                      <h3 className="text-fluid-lg font-medium mb-3">{section.title}</h3>
                       <div className="space-y-2">
                         {section.items.map((item) => {
                           const isSelected = section.title === 'Size'
@@ -170,9 +170,9 @@ export default function FoodDetailsModal({ isOpen, onClose, food }: FoodDetailsM
                                   : 'border-gray-200 hover:border-[--primary-color] hover:bg-[--primary-color]/5'
                               }`}
                             >
-                              <span>{item.name}</span>
+                              <span className="text-fluid-base">{item.name}</span>
                               {item.price && (
-                                <span className="text-sm text-gray-500">
+                                <span className="text-fluid-sm text-gray-500">
                                   +${item.price.toFixed(2)}
                                 </span>
                               )}
@@ -186,7 +186,7 @@ export default function FoodDetailsModal({ isOpen, onClose, food }: FoodDetailsM
                   <div className="pt-4 border-t">
                     <motion.button
                       whileTap={{ scale: 0.98 }}
-                      className="w-full btn btn-primary"
+                      className="w-full btn btn-primary text-fluid-base"
                       onClick={handleAddToCart}
                     >
                       Add to Cart - ${(

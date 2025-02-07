@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CheckCircleIcon, ClockIcon, TruckIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, CheckCircleIcon, ClockIcon, TruckIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 const orders = [
   {
@@ -63,6 +64,9 @@ const statusConfig = {
 export default function OrdersPage() {
   return (
     <div className="p-4">
+          <Link href="/main" className="mr-4">
+            <ArrowLeftIcon className="w-6 h-6" />
+          </Link>
       <h1 className="text-2xl font-bold mb-6">Your Orders</h1>
       
       <div className="space-y-4">

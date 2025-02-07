@@ -16,11 +16,14 @@ const navItems = [
 export default function BottomNav() {
   const pathname = usePathname();
 
+  // Handle root path redirect to main
+  const currentPath = pathname === '/' ? '/main' : pathname;
+
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 pb-safe-area">
       <div className="max-w-md mx-auto px-6 h-16 flex items-center justify-between">
         {navItems.map(({ href, label, Icon, ActiveIcon }) => {
-          const isActive = pathname === href;
+          const isActive = currentPath === href;
           return (
             <Link
               key={href}
@@ -39,7 +42,7 @@ export default function BottomNav() {
               ) : (
                 <Icon className="w-6 h-6 text-gray-500" />
               )}
-              <span className={`text-xs mt-1 ${isActive ? 'text-[--primary-color] font-medium' : 'text-gray-500'}`}>
+              <span className={`text-fluid-xs mt-1 ${isActive ? 'text-[--primary-color] font-medium' : 'text-gray-500'}`}>
                 {label}
               </span>
             </Link>

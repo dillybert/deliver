@@ -113,7 +113,7 @@ export default function HomePage() {
         </div>
 
         {/* Special Offers */}
-        <div className="mb-6 overflow-x-auto flex gap-4 -mx-4 px-4 scrollbar-hide">
+        <div className="mb-6 overflow-x-auto scrollbar-hide flex gap-4 -mx-4 px-4 py-2 scrollbar-hide">
           {specialOffers.map((offer) => (
             <motion.div
               key={offer.id}
@@ -146,7 +146,7 @@ export default function HomePage() {
                 selectedCategory === category.id
                   ? 'btn-primary'
                   : 'bg-gray-100 text-gray-700'
-              } whitespace-nowrap min-w-20`}
+              } whitespace-nowrap`}
               whileTap={{ scale: 0.95 }}
             >
               <span className="mr-1">{category.emoji}</span>

@@ -83,10 +83,10 @@ export default function FoodCard(props: FoodCardProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
           <div className="absolute bottom-2 left-2 flex items-center space-x-2">
-            <div className="px-2 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-medium">
+            <div className="px-1 rounded-md bg-white/90 backdrop-blur-sm text-fluid-xs font-small">
               ⭐️ {rating}
             </div>
-            <div className="px-2 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-medium">
+            <div className="px-1 rounded-md bg-white/90 backdrop-blur-sm text-fluid-xs font-small">
               🕒 {prepTime}
             </div>
           </div>
@@ -96,18 +96,18 @@ export default function FoodCard(props: FoodCardProps) {
           className="cursor-pointer"
           onClick={() => setIsModalOpen(true)}
         >
-          <h3 className="font-semibold text-sm">{name}</h3>
-          <p className="text-xs text-gray-500 mt-1 line-clamp-2">
+          <h3 className="font-semibold text-fluid-base">{name}</h3>
+          <p className="text-fluid-xs text-gray-500 mt-1 line-clamp-2">
             {description}
           </p>
         </div>
 
         <div className="flex items-center justify-between mt-3">
-          <span className="font-semibold text-[--primary-color]">
+          <span className="font-semibold text-fluid-base text-[--primary-color]">
             ${price}
           </span>
           <motion.button 
-            className="btn btn-primary py-1.5 px-3 text-sm"
+            className="btn btn-primary py-1.5 px-3 text-fluid-sm"
             whileTap={{ scale: 0.95 }}
             onClick={(e) => {
               e.stopPropagation();
