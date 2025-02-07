@@ -20,7 +20,7 @@ export default function BottomNav() {
   const currentPath = pathname === '/' ? '/main' : pathname;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 pb-safe-area">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[--background-primary] border-t border-[--border-color] pb-safe-area">
       <div className="max-w-md mx-auto px-6 h-16 flex items-center justify-between">
         {navItems.map(({ href, label, Icon, ActiveIcon }) => {
           const isActive = currentPath === href;
@@ -33,16 +33,16 @@ export default function BottomNav() {
               {isActive && (
                 <motion.span
                   layoutId="bubble"
-                  className="absolute inset-0 w-16 h-16 bg-primary/5 rounded-full -top-2"
+                  className="absolute inset-0 w-16 h-16 bg-[--primary-color]/10 rounded-full -top-2"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
               {isActive ? (
                 <ActiveIcon className="w-6 h-6 text-[--primary-color]" />
               ) : (
-                <Icon className="w-6 h-6 text-gray-500" />
+                <Icon className="w-6 h-6 text-[--text-tertiary] hover:text-[--text-secondary]" />
               )}
-              <span className={`text-fluid-xs mt-1 ${isActive ? 'text-[--primary-color] font-medium' : 'text-gray-500'}`}>
+              <span className={`text-fluid-xs mt-1 ${isActive ? 'text-[--primary-color] font-medium' : 'text-[--text-tertiary] hover:text-[--text-secondary]'}`}>
                 {label}
               </span>
             </Link>

@@ -2,9 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root[data-theme="light"] {
   --primary-color: #FF4E4E;
+  --primary-color-hover: #FF3535;
+  --primary-color-rgb: 255, 78, 78;
   --secondary-color: #FFB74D;
+  --success-color: #10B981;
+  --success-color-rgb: 16, 185, 129;
+  --error-color: #EF4444;
+  --error-color-rgb: 239, 68, 68;
+  --warning-color: #F59E0B;
+  --warning-color-rgb: 245, 158, 11;
+  --background-primary: #ffffff;
+  --background-secondary: #f9fafb;
+  --background-tertiary: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --border-color: #e5e7eb;
+  --card-background: #ffffff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --button-text: #ffffff;
+  --min-font-size: 14;
+  --max-font-size: 18;
+  --fluid-screen-min: 320;
+  --fluid-screen-max: 1200;
+}
+
+:root[data-theme="dark"] {
+  --primary-color: #FF6B6B;
+  --primary-color-hover: #FF5252;
+  --primary-color-rgb: 255, 107, 107;
+  --secondary-color: #FFB74D;
+  --success-color: #34D399;
+  --success-color-rgb: 52, 211, 153;
+  --error-color: #F87171;
+  --error-color-rgb: 248, 113, 113;
+  --warning-color: #FBBF24;
+  --warning-color-rgb: 251, 191, 36;
+  --background-primary: #111827;
+  --background-secondary: #1f2937;
+  --background-tertiary: #374151;
+  --text-primary: #f9fafb;
+  --text-secondary: #e5e7eb;
+  --text-tertiary: #d1d5db;
+  --border-color: #374151;
+  --card-background: #1f2937;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --button-text: #ffffff;
   --min-font-size: 14;
   --max-font-size: 18;
   --fluid-screen-min: 320;
@@ -21,8 +66,10 @@
   }
 
   body {
-    @apply text-gray-900 overflow-x-hidden touch-manipulation;
+    @apply touch-manipulation;
     -webkit-tap-highlight-color: transparent;
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
   }
 
   h1 {
@@ -48,20 +95,69 @@
   }
   
   .btn-primary {
-    @apply bg-[--primary-color] text-white hover:bg-opacity-90;
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
   }
   
   .btn-secondary {
-    @apply bg-[--secondary-color] text-white hover:bg-opacity-90;
+    background-color: var(--secondary-color);
+    color: var(--button-text);
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .btn-ghost {
+    background-color: var(--background-tertiary);
+    color: var(--text-primary);
+    &:hover {
+      background-color: var(--background-secondary);
+    }
   }
   
   .card {
-    @apply rounded-2xl bg-white shadow-sm p-4;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    @apply rounded-2xl p-4;
   }
   
   .input {
-    @apply w-full px-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:border-[--primary-color] transition-colors;
-    font-size: clamp(0.875rem, calc(0.875rem + 0.25vw), 1rem);
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    @apply w-full px-4 py-2 rounded-xl transition-colors;
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.1);
+    }
+    &::placeholder {
+      color: var(--text-tertiary);
+    }
+  }
+
+  .badge {
+    @apply px-2 py-1 rounded-full text-fluid-xs font-medium;
+    &.badge-primary {
+      background-color: rgba(var(--primary-color-rgb), 0.1);
+      color: var(--primary-color);
+    }
+    &.badge-success {
+      background-color: rgba(var(--success-color-rgb), 0.1);
+      color: var(--success-color);
+    }
+    &.badge-warning {
+      background-color: rgba(var(--warning-color-rgb), 0.1);
+      color: var(--warning-color);
+    }
+    &.badge-error {
+      background-color: rgba(var(--error-color-rgb), 0.1);
+      color: var(--error-color);
+    }
   }
 }
 
@@ -111,6 +207,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ddd;
-  border-radius: 4px;
+  background-color: var(--text-tertiary);
+  &:hover {
+    background-color: var(--text-secondary);
+  }
 }
